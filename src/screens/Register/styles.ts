@@ -32,4 +32,9 @@ const Form = styled.View`
 
 const Fields = styled.View``;
 
-export { Container, Header, Title, Form, Fields };
+const TransactionsTypes = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export { Container, Header, Title, Form, Fields, TransactionsTypes };
