@@ -44,7 +44,7 @@ const Icon = styled(Feather)<TypeProps>`
   ${({ type }) =>
     type === 'down' &&
     css`
-      color: ${({ theme }) => theme.colors.atention};
+      color: ${({ theme }) => theme.colors.attention};
     `};
 
   ${({ type }) =>
