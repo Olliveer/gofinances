@@ -7,6 +7,7 @@ import {
 } from 'react-native-iphone-x-helper';
 import { FlatList } from 'react-native';
 import { DataListProps } from '.';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 const Container = styled.View`
   flex: 1;
@@ -62,6 +63,8 @@ const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
+const LogoutButton = styled(BorderlessButton)``;
+
 const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: ${RFValue(24)}px;
@@ -115,4 +118,5 @@ export {
   Transactions,
   Title,
   TransactionList,
+  LogoutButton,
 };

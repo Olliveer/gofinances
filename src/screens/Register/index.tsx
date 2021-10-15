@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Alert, Keyboard, Modal, TouchableWithoutFeedback } from 'react-native';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '../../components/Form/Button';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
 import { Input } from '../../components/Form/Input';
 import { InputForm } from '../../components/Form/InputForm';
@@ -17,6 +16,7 @@ import {
   Fields,
   TransactionsTypes,
 } from './styles';
+import { Button } from '../../components/Form/Button';
 
 type FormData = {
   name: string;
@@ -120,7 +120,7 @@ export function Register() {
             />
           </Fields>
 
-          <Button title='Enviar' onPress={handleSubmit(handleRegister)} />
+          <Button title='Enviar' onSubmit={handleSubmit(handleRegister)} />
         </Form>
 
         <Modal visible={categoryModalOpen}>

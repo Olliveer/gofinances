@@ -1,14 +1,16 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 import { Container, Title } from './styles';
 
-type ButtonProps = TouchableOpacityProps & {
+// onPress dont accept type void  -> var onPress: ((pointerInside: boolean) => void) & (() => void)
+type ButtonProps = RectButtonProps & {
   title: string;
+  onSubmit: () => void;
 };
 
-export function Button({ title, ...rest }: ButtonProps) {
+export function Button({ title, onSubmit, ...rest }: ButtonProps) {
   return (
-    <Container {...rest} activeOpacity={0.7}>
+    <Container onPress={onSubmit} {...rest}>
       <Title>{title}</Title>
     </Container>
   );
