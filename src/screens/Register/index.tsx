@@ -103,8 +103,7 @@ export function Register() {
   useEffect(() => {
     async function laodData() {
       // await AsyncStorage.removeItem(dataKey);
-      const data = await AsyncStorage.getItem(dataKey);
-      console.log(JSON.parse(data!));
+      await AsyncStorage.getItem(dataKey);
     }
 
     laodData();
