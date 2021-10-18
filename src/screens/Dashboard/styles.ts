@@ -104,6 +104,12 @@ const TransactionList = styled(
   },
 })``;
 
+const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
 export {
   Container,
   Header,
@@ -119,4 +125,5 @@ export {
   Title,
   TransactionList,
   LogoutButton,
+  LoadContainer,
 };
