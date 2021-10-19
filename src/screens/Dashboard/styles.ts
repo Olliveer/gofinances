@@ -18,8 +18,8 @@ const Header = styled.View`
   width: 100%;
   height: ${RFPercentage(42)}px;
   background-color: ${({ theme }) => theme.colors.primary};
-  flex-direction: row;
 
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
 `;
@@ -32,7 +32,7 @@ const UserWrapper = styled.View`
   align-items: center;
 
   padding: 0 24px;
-  margin-top: ${getStatusBarHeight() + RFValue(28)}px;
+  margin-top: ${getStatusBarHeight() + RFValue(10)}px;
 `;
 
 const UserInfo = styled.View`

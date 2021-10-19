@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Feather } from '@expo/vector-icons';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 const Container = styled.View`
   flex: 1;
@@ -23,13 +25,49 @@ const Title = styled.Text`
   font-size: ${RFValue(18)}px;
 `;
 
-const Content = styled.ScrollView.attrs({
-  contentContainerStyle: { padding: 24 },
-})``;
+const Content = styled.ScrollView``;
 
 const ChartContainer = styled.View`
   width: 100%;
   align-items: center;
 `;
 
-export { Container, Header, Title, Content, ChartContainer };
+const MonthSelect = styled.View`
+  width: 100%;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 24px;
+`;
+
+const MonthSelectButton = styled(BorderlessButton)``;
+
+const Month = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(20)}px;
+`;
+
+const MonthSelectIcon = styled(Feather)`
+  font-size: ${RFValue(24)}px;
+`;
+
+const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export {
+  Container,
+  Header,
+  Title,
+  Content,
+  ChartContainer,
+  MonthSelect,
+  MonthSelectButton,
+  Month,
+  MonthSelectIcon,
+  LoadContainer,
+};
