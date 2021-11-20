@@ -14,6 +14,7 @@ import { StatusBar } from 'react-native';
 import { ThemeProvider, useTheme } from 'styled-components';
 import theme from './src/global/styles/theme';
 import { AppRoutes } from './src/routes/app.routes';
+import { SignIn } from './src/screens/SignIn';
 
 export default function App() {
   // const theme = useTheme()
@@ -31,7 +32,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar backgroundColor={theme.colors.primary} translucent />
       <NavigationContainer>
-        <AppRoutes />
+        {/* <AppRoutes /> */}
+        <SignIn />
       </NavigationContainer>
     </ThemeProvider>
   );

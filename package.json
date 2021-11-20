@@ -4,7 +4,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start"
+    "start": "react-native start",
+    "dev": "expo start"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.0",
@@ -43,6 +44,7 @@
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@types/styled-components-react-native": "^5.1.1",
+    "react-native-svg-transformer": "^0.14.3",
     "typescript": "~4.0.0"
   },
   "private": true
