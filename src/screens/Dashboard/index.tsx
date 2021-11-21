@@ -9,6 +9,7 @@ import {
   TransactionCard,
   TransactionCardProps,
 } from '../../components/TransactionCard';
+import { useAuth } from '../../hooks/useAuth';
 
 import {
   Container,
@@ -44,6 +45,7 @@ type HighlightData = {
 };
 
 export function Dashboard() {
+  const { signOut } = useAuth();
   const theme = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [transactions, setTransactions] = useState<DataListProps[]>([]);
@@ -166,11 +168,15 @@ export function Dashboard() {
     }, [])
   );
 
+  async function handleLogout() {
+    signOut();
+  }
+
   return (
     <Container>
       {isLoading ? (
         <LoadContainer>
-          <ActivityIndicator color={theme.colors.primary} size='large' />
+          <ActivityIndicator color={theme.colors.primary} size="large" />
         </LoadContainer>
       ) : (
         <>
@@ -189,28 +195,28 @@ export function Dashboard() {
                 </User>
               </UserInfo>
 
-              <LogoutButton onPress={() => {}}>
-                <Icon name='power' />
+              <LogoutButton onPress={handleLogout}>
+                <Icon name="power" />
               </LogoutButton>
             </UserWrapper>
           </Header>
 
           <HighlightCards>
             <HighlightCard
-              type='up'
-              title='Entradas'
+              type="up"
+              title="Entradas"
               amount={highlightData.entries.amount}
               lastTransaction={highlightData.entries.lastTransaction}
             />
             <HighlightCard
-              type='down'
-              title='Saídas'
+              type="down"
+              title="Saídas"
               amount={highlightData.expensives.amount}
               lastTransaction={highlightData.expensives.lastTransaction}
             />
             <HighlightCard
-              type='total'
-              title='Total'
+              type="total"
+              title="Total"
               amount={highlightData.total.amount}
               lastTransaction={highlightData.total.lastTransaction}
             />

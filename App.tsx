@@ -12,12 +12,13 @@ import 'intl/locale-data/jsonp/pt-BR';
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeProvider, useTheme } from 'styled-components';
+import { AuthProvider } from './src/context/AuthContext';
 import theme from './src/global/styles/theme';
+import { Routes } from './src/routes';
 import { AppRoutes } from './src/routes/app.routes';
 import { SignIn } from './src/screens/SignIn';
 
 export default function App() {
-  // const theme = useTheme()
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -31,10 +32,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar backgroundColor={theme.colors.primary} translucent />
-      <NavigationContainer>
-        {/* <AppRoutes /> */}
-        <SignIn />
-      </NavigationContainer>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
