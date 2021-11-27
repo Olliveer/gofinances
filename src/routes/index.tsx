@@ -9,7 +9,7 @@ function Routes() {
 
   return (
     <NavigationContainer>
-      {user ? <AppRoutes /> : <AuthRoutes />}
+      {user.id ? <AppRoutes /> : <AuthRoutes />}
     </NavigationContainer>
   );
 }

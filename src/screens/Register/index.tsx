@@ -10,6 +10,7 @@ import { Button } from '../../components/Form/Button';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
 import { InputForm } from '../../components/Form/InputForm';
 import { TransactionTypeButton } from '../../components/TransactionTypeButton';
+import { useAuth } from '../../hooks/useAuth';
 import { CategorySelect } from '../CategorySelect';
 import {
   Container,
@@ -31,8 +32,9 @@ const schema = Yup.object().shape({
 });
 
 export function Register() {
+  const { user } = useAuth();
   const navigation = useNavigation();
-  const dataKey = '@gofinances:transactions';
+  const dataKey = `@gofinances:transactions_user:${user.id}`;
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [category, setCategory] = useState({
@@ -119,33 +121,33 @@ export function Register() {
         <Form>
           <Fields>
             <InputForm
-              name='name'
+              name="name"
               control={control}
-              placeholder='Nome'
-              autoCapitalize='sentences'
+              placeholder="Nome"
+              autoCapitalize="sentences"
               autoCorrect={false}
               error={errors.name && errors.name.message}
             />
 
             <InputForm
-              name='amount'
-              keyboardType='numeric'
+              name="amount"
+              keyboardType="numeric"
               control={control}
-              placeholder='Preço'
+              placeholder="Preço"
               error={errors.amount && errors.amount.message}
             />
 
             <TransactionsTypes>
               <TransactionTypeButton
                 onPress={() => handleTransactionsTypeSelect('positive')}
-                title='Income'
-                type='up'
+                title="Income"
+                type="up"
                 isActive={transactionType === 'positive'}
               />
               <TransactionTypeButton
                 onPress={() => handleTransactionsTypeSelect('negative')}
-                title='Outcome'
-                type='down'
+                title="Outcome"
+                type="down"
                 isActive={transactionType === 'negative'}
               />
             </TransactionsTypes>
@@ -156,7 +158,7 @@ export function Register() {
             />
           </Fields>
 
-          <Button title='Enviar' onSubmit={handleSubmit(handleRegister)} />
+          <Button title="Enviar" onSubmit={handleSubmit(handleRegister)} />
         </Form>
 
         <Modal visible={categoryModalOpen}>

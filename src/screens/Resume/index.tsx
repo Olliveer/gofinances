@@ -9,6 +9,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 import { VictoryPie } from 'victory-native';
 import { HistoryCard } from '../../components/HistoryCard';
+import { useAuth } from '../../hooks/useAuth';
 import { categories } from '../../utils/categories';
 import {
   ChartContainer,
@@ -41,6 +42,7 @@ type CategoryData = {
 };
 
 export function Resume() {
+  const { user } = useAuth();
   const theme = useTheme();
   const paddingBottom = useBottomTabBarHeight();
   const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +61,7 @@ export function Resume() {
 
   async function loadData() {
     setIsLoading(true);
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
 
     const responseFormatted = response ? JSON.parse(response) : [];
@@ -125,13 +127,13 @@ export function Resume() {
       </Header>
       {isLoading ? (
         <LoadContainer>
-          <ActivityIndicator color={theme.colors.primary} size='large' />
+          <ActivityIndicator color={theme.colors.primary} size="large" />
         </LoadContainer>
       ) : (
         <>
           <MonthSelect>
             <MonthSelectButton onPress={() => handleChangeDate('prev')}>
-              <MonthSelectIcon name='chevron-left' />
+              <MonthSelectIcon name="chevron-left" />
             </MonthSelectButton>
 
             <Month>
@@ -141,7 +143,7 @@ export function Resume() {
             </Month>
 
             <MonthSelectButton onPress={() => handleChangeDate('next')}>
-              <MonthSelectIcon name='chevron-right' />
+              <MonthSelectIcon name="chevron-right" />
             </MonthSelectButton>
           </MonthSelect>
           <Content
@@ -154,8 +156,8 @@ export function Resume() {
             <ChartContainer>
               <VictoryPie
                 data={totalByCategories}
-                x='percent'
-                y='total'
+                x="percent"
+                y="total"
                 colorScale={totalByCategories.map((category) => category.color)}
                 style={{
                   labels: {

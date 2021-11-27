@@ -20,6 +20,7 @@ type AuthContextData = {
   sigInWithGoogle: () => void;
   sigInWithApple: () => void;
   signOut: () => void;
+  isLoading: boolean;
 };
 
 type AuthorizationResponse = {
@@ -90,11 +91,13 @@ function AuthProvider({ children }: AuthProviderProps) {
       });
 
       if (crendential) {
+        const name = crendential.fullName!.givenName!;
+        const photo = `https://ui-avatars.com/api/?name=${name}&length=1`;
         const userLogged = {
           id: String(crendential.user),
-          name: crendential.fullName!.givenName!,
+          name,
           email: crendential.email!,
-          photo: undefined,
+          photo,
         };
 
         setUser(userLogged);
@@ -107,12 +110,13 @@ function AuthProvider({ children }: AuthProviderProps) {
   }
 
   async function signOut() {
+    setUser({} as User);
     await AsyncStorage.removeItem(userStorageKey);
   }
 
   return (
     <AuthContext.Provider
-      value={{ user, sigInWithGoogle, sigInWithApple, signOut }}
+      value={{ user, sigInWithGoogle, sigInWithApple, signOut, isLoading }}
     >
       {children}
     </AuthContext.Provider>
